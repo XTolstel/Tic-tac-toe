@@ -175,8 +175,7 @@ namespace Udemy_Krestik
         private void button2_1_Click(object sender, EventArgs e)
         {
             difficult = Difficulty.medium;
-            Random random = new Random();
-            Largenom2number = random.Next(1, 100);
+            Largenom2number = rng.Next(1, 100);
             buttons_Clear();
         }
         public int Largenom2number;
@@ -245,6 +244,20 @@ namespace Udemy_Krestik
         }
         public List<Button> buttons = new List<Button>();
         public List<Button> buttonsM = new List<Button>();
+        private readonly Random rng = new Random();
+        private static readonly int[][] WinningLines =
+        {
+            new[] { 0, 1, 2 },
+            new[] { 3, 4, 5 },
+            new[] { 6, 7, 8 },
+            new[] { 0, 3, 6 },
+            new[] { 1, 4, 7 },
+            new[] { 2, 5, 8 },
+            new[] { 0, 4, 8 },
+            new[] { 2, 4, 6 }
+        };
+        private readonly int[] cornerMoves = { 0, 2, 6, 8 };
+        private readonly char[] board = new char[9];
         public void crLabel()
         {
             if (labelLar.Text == null || labelLar.Text=="")
@@ -310,8 +323,142 @@ namespace Udemy_Krestik
             }
         }
         public String nol;
+        private void SyncBoardFromButtons()
+        {
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                board[i] = string.IsNullOrEmpty(buttons[i].Text) ? ' ' : buttons[i].Text[0];
+            }
+        }
+
+        private List<int> GetAvailableMoves(char[] state)
+        {
+            var moves = new List<int>();
+            for (int i = 0; i < state.Length; i++)
+            {
+                if (state[i] == ' ')
+                {
+                    moves.Add(i);
+                }
+            }
+
+            return moves;
+        }
+
+        private char CheckWinner(char[] state)
+        {
+            foreach (var line in WinningLines)
+            {
+                char first = state[line[0]];
+                if (first != ' ' && first == state[line[1]] && first == state[line[2]])
+                {
+                    return first;
+                }
+            }
+
+            return ' ';
+        }
+
+        private bool IsBoardFull(char[] state)
+        {
+            return state.All(cell => cell != ' ');
+        }
+
+        private void MakeMove(char[] state, int move, char symbol)
+        {
+            state[move] = symbol;
+        }
+
+        private void UndoMove(char[] state, int move)
+        {
+            state[move] = ' ';
+        }
+
+        private int Minimax(char[] state, bool isMaximizing, int depth, char aiSymbol, char humanSymbol, int alpha, int beta)
+        {
+            char winner = CheckWinner(state);
+            if (winner == aiSymbol) return 10 - depth;
+            if (winner == humanSymbol) return depth - 10;
+            if (IsBoardFull(state)) return 0;
+
+            if (isMaximizing)
+            {
+                int bestScore = int.MinValue;
+                foreach (int move in GetAvailableMoves(state))
+                {
+                    MakeMove(state, move, aiSymbol);
+                    int score = Minimax(state, false, depth + 1, aiSymbol, humanSymbol, alpha, beta);
+                    UndoMove(state, move);
+                    bestScore = Math.Max(bestScore, score);
+                    alpha = Math.Max(alpha, score);
+                    if (beta <= alpha) break;
+                }
+
+                return bestScore;
+            }
+
+            int minScore = int.MaxValue;
+            foreach (int move in GetAvailableMoves(state))
+            {
+                MakeMove(state, move, humanSymbol);
+                int score = Minimax(state, true, depth + 1, aiSymbol, humanSymbol, alpha, beta);
+                UndoMove(state, move);
+                minScore = Math.Min(minScore, score);
+                beta = Math.Min(beta, score);
+                if (beta <= alpha) break;
+            }
+
+            return minScore;
+        }
+
+        private int FindBestMove(char[] state, char aiSymbol, char humanSymbol)
+        {
+            int bestScore = int.MinValue;
+            int bestMove = -1;
+
+            foreach (int move in GetAvailableMoves(state))
+            {
+                MakeMove(state, move, aiSymbol);
+                int score = Minimax(state, false, 0, aiSymbol, humanSymbol, int.MinValue, int.MaxValue);
+                UndoMove(state, move);
+
+                if (score > bestScore || (score == bestScore && move < bestMove))
+                {
+                    bestScore = score;
+                    bestMove = move;
+                }
+            }
+
+            return bestMove;
+        }
+
+        private void ApplyAiMoveByIndex(int index)
+        {
+            if (index < 0 || index >= buttons.Count || !string.IsNullOrEmpty(buttons[index].Text))
+            {
+                return;
+            }
+
+            buttons[index].Text = nol;
+
+            if (CheckWinner(board) == nol[0])
+            {
+                larLabel();
+            }
+            else if (IsBoardFull(board))
+            {
+                larNLabel();
+            }
+        }
+
         public void Largenom()
         {
+            SyncBoardFromButtons();
+            if (CheckWinner(board) != ' ' || IsBoardFull(board))
+            {
+                return;
+            }
+
             if (difficult==Difficulty.easy) Largenom1();
             else if (difficult==Difficulty.medium) Largenom2();
             else if (difficult==Difficulty.impossible) Largenom3();
@@ -324,56 +471,32 @@ namespace Udemy_Krestik
         }
         public void Largenom1()
         {
-            Random random = new Random();
-            int i = random.Next(1, 10);
-            for (int j = 0; j<=999; j++)
-            {
-                /*buttons[0].Text="O";
-                InvokeMethodByName(buttons[j].Name);
-                buttons[1].Text="O";
-                InvokeMethodByName(buttons[j].Name);
-                buttons[2].Text="O";
-                InvokeMethodByName(buttons[j].Name);
-                j=999;*/
-
-                if (buttons[i-1].Text=="")
-                {
-                    buttons[i-1].Text=nol;
-                    InvokeMethodByName(buttons[i-1].Name);
-                    j=999;
-                }
-                else i = random.Next(1, 10);
-            }
+            SyncBoardFromButtons();
+            var availableMoves = GetAvailableMoves(board);
+            if (!availableMoves.Any()) return;
+            int move = availableMoves[rng.Next(availableMoves.Count)];
+            buttons[move].Text = nol;
+            InvokeMethodByName(buttons[move].Name);
             buttons_Clear();
         }
         public void Largenom2()
         {
-            Random random = new Random();
-            if (turn==5) Largenom3_5();
-            int j = random.Next(1, 100);
+            SyncBoardFromButtons();
+            if (turn==5 || IsBoardFull(board))
+            {
+                Largenom3_5();
+                return;
+            }
+
+            int j = rng.Next(1, 100);
             if (j>Largenom2number)
             {
-
-                int a = random.Next(1, 10);
-                for (int b = 0; b<=999; b++)
-                {
-                    /*buttons[0].Text="O";
-                    InvokeMethodByName(buttons[j].Name);
-                    buttons[1].Text="O";
-                    InvokeMethodByName(buttons[j].Name);
-                    buttons[2].Text="O";
-                    InvokeMethodByName(buttons[j].Name);
-                    j=999;*/
-
-                    if (buttons[a-1].Text=="")
-                    {
-                        if (turn==2 && (buttons[a-1]==button1 || buttons[a-1]==button3 || buttons[a-1]==button7 || buttons[a-1]==button9)) Lar_button=buttons[a-1];
-                        buttons[a-1].Text=nol;
-                        InvokeMethodByName(buttons[a-1].Name);
-                        b=999;
-                    }
-                    else a = random.Next(1, 10);
-                }
+                var availableMoves = GetAvailableMoves(board);
+                if (!availableMoves.Any()) return;
+                int move = availableMoves[rng.Next(availableMoves.Count)];
+                if (turn==2 && cornerMoves.Contains(move)) Lar_button=buttons[move];
+                buttons[move].Text=nol;
+                InvokeMethodByName(buttons[move].Name);
             }
             else if (j<Largenom2number)
             {
@@ -384,11 +507,18 @@ namespace Udemy_Krestik
         public bool Larbutton;
         public void Largenom3()
         {
-            if (turn==1) Largenom3_1();
-            else if (turn==2) Largenom3_2();
-            else if (turn==3) Largenom3_3();
-            else if (turn==4) Largenom3_4();
-            else if (turn==5) Largenom3_5();
+            SyncBoardFromButtons();
+            char aiSymbol = nol[0];
+            char humanSymbol = krestik[0];
+            int bestMove = FindBestMove(board, aiSymbol, humanSymbol);
+            if (bestMove == -1)
+            {
+                Largenom3_5();
+                return;
+            }
+
+            MakeMove(board, bestMove, aiSymbol);
+            ApplyAiMoveByIndex(bestMove);
             buttons_Clear();
         }
         public void Largenom3_1()
