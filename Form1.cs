@@ -112,7 +112,7 @@ namespace Udemy_Krestik
             // Создание кнопки
             button1_1 = new Button();
             // Настройка свойств кнопки
-            int x = 80, y = 80;
+            int x = 80, y = 130;
             button1_1.Location = new System.Drawing.Point(x, y); // Устанавливаем координаты (x, y)
             button1_1.Size = new System.Drawing.Size(90, 45); // Устанавливаем размер кнопки (ширина, высота)
             button1_1.Text = "Difficulty 1"; // Устанавливаем текст кнопки
@@ -149,7 +149,7 @@ namespace Udemy_Krestik
             labelLarS = new System.Windows.Forms.Label();
             // Настройка свойств кнопки
             labelLarS.Location = new System.Drawing.Point(80, 20); // Устанавливаем координаты (x, y)
-            labelLarS.Size = new System.Drawing.Size(120, 100); // Устанавливаем размер кнопки (ширина, высота)
+            labelLarS.Size = new System.Drawing.Size(180, 100); // Устанавливаем размер кнопки (ширина, высота)
             labelLarS.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold | FontStyle.Italic);
             labelLarS.Text = "I am Largenom\nYour opponent\nChoose my power level"; // Устанавливаем текст кнопки
             // Подписка на событие Click
@@ -196,7 +196,7 @@ namespace Udemy_Krestik
             // Создание кнопки
             button1_1 = new Button();
             // Настройка свойств кнопки
-            int x = 80, y = 80;
+            int x = 80, y = 130;
             button1_1.Location = new System.Drawing.Point(x, y); // Устанавливаем координаты (x, y)
             button1_1.Size = new System.Drawing.Size(90, 45); // Устанавливаем размер кнопки (ширина, высота)
             button1_1.Text = "Difficulty 1"; // Устанавливаем текст кнопки
@@ -233,7 +233,7 @@ namespace Udemy_Krestik
                 labelLarS = new System.Windows.Forms.Label();
                 // Настройка свойств кнопки
                 labelLarS.Location = new System.Drawing.Point(80, 20); // Устанавливаем координаты (x, y)
-                labelLarS.Size = new System.Drawing.Size(120, 100); // Устанавливаем размер кнопки (ширина, высота)
+                labelLarS.Size = new System.Drawing.Size(180, 100); // Устанавливаем размер кнопки (ширина, высота)
                 labelLarS.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold | FontStyle.Italic);
                 labelLarS.Text = "I am Largenom\nYour opponent\nChoose my power level"; // Устанавливаем текст кнопки
                                                                                         // Подписка на событие Click
