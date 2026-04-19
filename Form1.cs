@@ -115,7 +115,7 @@ namespace Udemy_Krestik
             int x = 80, y = 80;
             button1_1.Location = new System.Drawing.Point(x, y); // Устанавливаем координаты (x, y)
             button1_1.Size = new System.Drawing.Size(90, 45); // Устанавливаем размер кнопки (ширина, высота)
-            button1_1.Text = "Сложность 1"; // Устанавливаем текст кнопки
+            button1_1.Text = "Difficulty 1"; // Устанавливаем текст кнопки
             // Подписка на событие Click
             button1_1.Click += new EventHandler(button1_1_Click);
             // Добавление кнопки на форму
@@ -128,7 +128,7 @@ namespace Udemy_Krestik
             
             button2_1.Location = new System.Drawing.Point(x, y+84); // Устанавливаем координаты (x, y)
             button2_1.Size = new System.Drawing.Size(90, 45); // Устанавливаем размер кнопки (ширина, высота)
-            button2_1.Text = "Сложность 2"; // Устанавливаем текст кнопки
+            button2_1.Text = "Difficulty 2"; // Устанавливаем текст кнопки
             // Подписка на событие Click
             button2_1.Click += new EventHandler(button2_1_Click);
             // Добавление кнопки на форму
@@ -139,7 +139,7 @@ namespace Udemy_Krestik
             // Настройка свойств кнопки
             button3_1.Location = new System.Drawing.Point(80, y+168); // Устанавливаем координаты (x, y)
             button3_1.Size = new System.Drawing.Size(90, 45); // Устанавливаем размер кнопки (ширина, высота)
-            button3_1.Text = "Сложность 3"; // Устанавливаем текст кнопки
+            button3_1.Text = "Difficulty 3"; // Устанавливаем текст кнопки
             // Подписка на событие Click
             button3_1.Click += new EventHandler(button3_1_Click);
             // Добавление кнопки на форму
@@ -151,7 +151,7 @@ namespace Udemy_Krestik
             labelLarS.Location = new System.Drawing.Point(80, 20); // Устанавливаем координаты (x, y)
             labelLarS.Size = new System.Drawing.Size(120, 100); // Устанавливаем размер кнопки (ширина, высота)
             labelLarS.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold | FontStyle.Italic);
-            labelLarS.Text = "Я Ларгеном\nТвой противник\nВыбери уровень моей силы"; // Устанавливаем текст кнопки
+            labelLarS.Text = "I am Largenom\nYour opponent\nChoose my power level"; // Устанавливаем текст кнопки
             // Подписка на событие Click
             labelLarS.Click += new EventHandler(labelLar_Click);
             // Добавление кнопки на форму
@@ -199,7 +199,7 @@ namespace Udemy_Krestik
             int x = 80, y = 80;
             button1_1.Location = new System.Drawing.Point(x, y); // Устанавливаем координаты (x, y)
             button1_1.Size = new System.Drawing.Size(90, 45); // Устанавливаем размер кнопки (ширина, высота)
-            button1_1.Text = "Сложность 1"; // Устанавливаем текст кнопки
+            button1_1.Text = "Difficulty 1"; // Устанавливаем текст кнопки
             // Подписка на событие Click
             button1_1.Click += new EventHandler(button1_1_Click);
             // Добавление кнопки на форму
@@ -212,7 +212,7 @@ namespace Udemy_Krestik
 
             button2_1.Location = new System.Drawing.Point(x, y+84); // Устанавливаем координаты (x, y)
             button2_1.Size = new System.Drawing.Size(90, 45); // Устанавливаем размер кнопки (ширина, высота)
-            button2_1.Text = "Сложность 2"; // Устанавливаем текст кнопки
+            button2_1.Text = "Difficulty 2"; // Устанавливаем текст кнопки
             // Подписка на событие Click
             button2_1.Click += new EventHandler(button2_1_Click);
             // Добавление кнопки на форму
@@ -223,7 +223,7 @@ namespace Udemy_Krestik
             // Настройка свойств кнопки
             button3_1.Location = new System.Drawing.Point(80, y+168); // Устанавливаем координаты (x, y)
             button3_1.Size = new System.Drawing.Size(90, 45); // Устанавливаем размер кнопки (ширина, высота)
-            button3_1.Text = "Сложность 3"; // Устанавливаем текст кнопки
+            button3_1.Text = "Difficulty 3"; // Устанавливаем текст кнопки
             // Подписка на событие Click
             button3_1.Click += new EventHandler(button3_1_Click);
             // Добавление кнопки на форму
@@ -235,7 +235,7 @@ namespace Udemy_Krestik
                 labelLarS.Location = new System.Drawing.Point(80, 20); // Устанавливаем координаты (x, y)
                 labelLarS.Size = new System.Drawing.Size(120, 100); // Устанавливаем размер кнопки (ширина, высота)
                 labelLarS.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold | FontStyle.Italic);
-                labelLarS.Text = "Я Ларгеном\nТвой противник\nВыбери уровень моей силы"; // Устанавливаем текст кнопки
+                labelLarS.Text = "I am Largenom\nYour opponent\nChoose my power level"; // Устанавливаем текст кнопки
                                                                                         // Подписка на событие Click
                 labelLarS.Click += new EventHandler(labelLar_Click);
                 // Добавление кнопки на форму
@@ -254,7 +254,7 @@ namespace Udemy_Krestik
                 labelLar.Location = new System.Drawing.Point(600, 72); // Устанавливаем координаты (x, y)
                 labelLar.Size = new System.Drawing.Size(150, 100); // Устанавливаем размер кнопки (ширина, высота)
                 labelLar.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold | FontStyle.Italic);
-                String win = "Ты победил меня, человечишка";
+                String win = "You beat me, human";
                 this.Controls.Add(labelLar);
                 labelLar.Click += new EventHandler(labelLar_Click);
                 foreach (char w in win)
@@ -276,7 +276,7 @@ namespace Udemy_Krestik
                 labelLar.Location = new System.Drawing.Point(600, 72); // Устанавливаем координаты (x, y)
                 labelLar.Size = new System.Drawing.Size(150, 100); // Устанавливаем размер кнопки (ширина, высота)
                 labelLar.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold | FontStyle.Italic);
-                String win = "Я победил, ничтожество";
+                String win = "I won, weakling";
                 this.Controls.Add(labelLar);
                 labelLar.Click += new EventHandler(labelLar_Click);
                 foreach (char w in win)
@@ -297,7 +297,7 @@ namespace Udemy_Krestik
                 labelLar.Location = new System.Drawing.Point(600, 72); // Устанавливаем координаты (x, y)
                 labelLar.Size = new System.Drawing.Size(150, 100); // Устанавливаем размер кнопки (ширина, высота)
                 labelLar.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold | FontStyle.Italic);
-                String win = "Ничья, мешок с костями";
+                String win = "Draw, bag of bones";
                 this.Controls.Add(labelLar);
                 labelLar.Click += new EventHandler(labelLar_Click);
                 foreach (char w in win)
@@ -317,7 +317,7 @@ namespace Udemy_Krestik
             else if (difficult==Difficulty.impossible) Largenom3();
             else
             {
-                MessageBox.Show("Выбери сложность, органическая дрянь");
+                MessageBox.Show("Choose a difficulty, organic trash");
                 ResetForm();
             }
             buttons_Clear();
@@ -554,7 +554,7 @@ namespace Udemy_Krestik
             }
             else
             {
-                MessageBox.Show($"Метод {methodName} не найден.");
+                MessageBox.Show($"Method {methodName} not found.");
             }
             buttons_Clear();
         }
@@ -571,7 +571,7 @@ namespace Udemy_Krestik
             }
             else
             {
-                MessageBox.Show($"Метод {methodName} не найден.");
+                MessageBox.Show($"Method {methodName} not found.");
             }
             buttons_Clear();
         }
@@ -588,7 +588,7 @@ namespace Udemy_Krestik
             }
             else
             {
-                MessageBox.Show($"Метод {methodName} не найден.");
+                MessageBox.Show($"Method {methodName} not found.");
             }
             buttons_Clear();
         }
@@ -605,7 +605,7 @@ namespace Udemy_Krestik
             }
             else
             {
-                MessageBox.Show($"Метод {methodName} не найден.");
+                MessageBox.Show($"Method {methodName} not found.");
             }
             buttons_Clear();
         }
@@ -622,7 +622,7 @@ namespace Udemy_Krestik
             }
             else
             {
-                MessageBox.Show($"Метод {methodName} не найден.");
+                MessageBox.Show($"Method {methodName} not found.");
             }
             buttons_Clear();
         }
@@ -639,7 +639,7 @@ namespace Udemy_Krestik
             }
             else
             {
-                MessageBox.Show($"Метод {methodName} не найден.");
+                MessageBox.Show($"Method {methodName} not found.");
             }
             buttons_Clear();
         }

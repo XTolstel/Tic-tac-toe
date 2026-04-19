@@ -168,7 +168,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 49);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Крестики нолики";
+            this.label1.Text = "Tic-tac-toe";
             this.label1.UseMnemonic = false;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -201,7 +201,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(214, 55);
             this.label2.TabIndex = 14;
-            this.label2.Text = "Какую сторону выберешь?";
+            this.label2.Text = "Which side will you choose?";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // resetButton
